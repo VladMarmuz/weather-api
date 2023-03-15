@@ -2,7 +2,6 @@ package com.marmuz.wheatherapi.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -10,8 +9,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
-public class RequestAvgTemp {
+public class AvgTempRequest {
 
     private LocalDate from;
     private LocalDate to;
