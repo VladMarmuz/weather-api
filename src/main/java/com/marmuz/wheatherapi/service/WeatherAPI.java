@@ -32,7 +32,7 @@ public class WeatherAPI {
             .build();
 
     @Transactional
-    @Scheduled(fixedRate = 86400000)
+    @Scheduled(fixedRate = 86400000) // the application will be read data from the API for the next day once a day
     public void addNewWeatherData() {
 
         Optional<WeatherData> weatherData;
@@ -48,7 +48,7 @@ public class WeatherAPI {
     private String sendGet() throws Exception {
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
-                .uri(URI.create("https://api.openweathermap.org/data/2.5/forecast?q=Minsk,by&units=metric&cnt=2&APPID=4d55983229e8b3f59d19986154322980"))
+                .uri(URI.create("https://api.openweathermap.org/data/2.5/forecast?q=Minsk,by&units=metric&cnt=8&APPID=4d55983229e8b3f59d19986154322980"))
                 .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
@@ -59,13 +59,13 @@ public class WeatherAPI {
 
     public Optional<WeatherData> gettingWeather() throws Exception {
 
-
         var json = sendGet();
 
         var obj = new JSONObject(json);
         var list = obj.getJSONArray("list");
-        var lastMeasurements = list.optJSONObject(0);
+        var lastMeasurements = list.optJSONObject(7);
         logger.info("Converting data from json to java object ");
+
         return Optional.of(WeatherData.builder()
                 .weatherDate(LocalDate.parse(parseIntoDate(lastMeasurements.getString("dt_txt"))))
                 .temperature(lastMeasurements.getJSONObject("main").getInt("temp"))
@@ -75,7 +75,6 @@ public class WeatherAPI {
                 .weatherConditions(lastMeasurements.getJSONArray("weather").getJSONObject(0).getString("main"))
                 .location(obj.getJSONObject("city").getString("name"))
                 .build());
-
     }
 
     public String parseIntoDate(String dateTime) {
