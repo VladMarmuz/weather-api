@@ -13,17 +13,13 @@ public class WeatherController {
 
     private final WeatherService weatherService;
 
-    @GetMapping()
-    public WeatherResponse getCurrentWeather(){
-
-        return null;
+    @GetMapping("/current")
+    public WeatherResponse getCurrentWeather() {
+        return weatherService.findWeather();
     }
 
     @PostMapping("/avg-temperature")
-    public Integer getAvgDailyTemp(@RequestBody RequestAvgTemp requestAvgTemp){
-
-        return null;
+    public Integer getAvgDailyTemp(@RequestBody RequestAvgTemp requestAvgTemp) {
+        return weatherService.findAvgTemp(requestAvgTemp);
     }
-
-
 }
