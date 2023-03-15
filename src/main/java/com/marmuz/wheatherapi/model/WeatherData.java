@@ -1,15 +1,13 @@
 package com.marmuz.wheatherapi.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Setter
 @Getter
 @Entity
@@ -22,11 +20,11 @@ public class WeatherData {
     @Column(name = "temperature")
     private int temperature;
     @Column(name = "wind_speed")
-    private String windSpeed;
+    private double windSpeed;
     @Column(name = "atmosphere_pressure")
     private int atmospherePressure;
     @Column(name = "air_humidity")
-    private String airHumidity;
+    private int airHumidity;
     @Column(name = "weather_conditions")
     private String weatherConditions;
     @Column(name = "location")

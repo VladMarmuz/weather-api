@@ -5,9 +5,9 @@
     (
         id BIGSERIAL PRIMARY KEY ,
         temperature INT NOT NULL,
-        wind_speed VARCHAR(64) NOT NULL,
+        wind_speed FLOAT(8) NOT NULL,
         atmosphere_pressure INT NOT NULL,
-        air_humidity VARCHAR(64) NOT NULL,
+        air_humidity INT NOT NULL,
         weather_conditions VARCHAR(64) NOT NULL,
         location VARCHAR(64) NOT NULL,
         weather_date DATE NOT NULL
