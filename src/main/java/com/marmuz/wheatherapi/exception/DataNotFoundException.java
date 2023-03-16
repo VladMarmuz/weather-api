@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class DataNotFoundException extends RuntimeException {
 
-    private static final Logger logger = LoggerFactory.getLogger(DataIsIncorrectException.class);
+    private static final Logger logger = LoggerFactory.getLogger(DataNotFoundException.class);
 
     public DataNotFoundException() {
         super(DescribeForDataNotFoundException.NOT_FOUND_EXCEPTION.getMessage());

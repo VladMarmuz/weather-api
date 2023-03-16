@@ -31,7 +31,7 @@ public class WeatherService {
     }
 
     public Integer findAvgDailyTemp(AvgTempRequest avgTempRequest) {
-        logger.info("Works endpoint getCurrentWeather");
+        logger.info("Works endpoint findAvgDailyTemp");
         return weatherRepository.findAVGTemperature(avgTempRequest.getFrom(), avgTempRequest.getTo())
                 .orElseThrow(DataIsIncorrectException::new);
     }

@@ -1,9 +1,9 @@
 package com.marmuz.wheatherapi.service;
 
-import com.marmuz.wheatherapi.controller.WeatherController;
 import com.marmuz.wheatherapi.exception.DataIsIncorrectException;
 import com.marmuz.wheatherapi.model.WeatherData;
 import com.marmuz.wheatherapi.repository.WeatherRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.slf4j.Logger;
