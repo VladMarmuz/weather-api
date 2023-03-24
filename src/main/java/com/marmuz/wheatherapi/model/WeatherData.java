@@ -16,7 +16,7 @@ public class WeatherData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(name = "temperature")
     private int temperature;
     @Column(name = "wind_speed")

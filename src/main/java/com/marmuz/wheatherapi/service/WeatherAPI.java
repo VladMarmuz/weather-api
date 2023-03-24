@@ -3,7 +3,6 @@ package com.marmuz.wheatherapi.service;
 import com.marmuz.wheatherapi.exception.DataIsIncorrectException;
 import com.marmuz.wheatherapi.model.WeatherData;
 import com.marmuz.wheatherapi.repository.WeatherRepository;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -24,9 +23,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class WeatherAPI {
     private static final Logger logger = LoggerFactory.getLogger(WeatherAPI.class);
+    private static final String URL_URI = "https://api.openweathermap.org/data/2.5/forecast?q=Minsk,by&units=metric&cnt=8&APPID=4d55983229e8b3f59d19986154322980";
 
     private final WeatherRepository weatherRepository;
-
     private final HttpClient httpClient = HttpClient.newBuilder()
             .version(HttpClient.Version.HTTP_2)
             .build();
@@ -48,7 +47,7 @@ public class WeatherAPI {
     private String sendGet() throws Exception {
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
-                .uri(URI.create("https://api.openweathermap.org/data/2.5/forecast?q=Minsk,by&units=metric&cnt=8&APPID=4d55983229e8b3f59d19986154322980"))
+                .uri(URI.create(URL_URI))
                 .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
