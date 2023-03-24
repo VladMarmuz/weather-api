@@ -1,7 +1,7 @@
 ## weather-api
 Test task from SENLA
 ### Tools
-___Java(17), Spring Framework(Boot, Data JPA), Maven, PostgreSql, Lombok, SLF4J, Liquibase, Vaadin, Rest, OpenWeatherMap API.___
+___Java(17), Spring Framework(Boot, Data JPA), Maven, PostgreSql, Lombok, SLF4J, Liquibase, Rest, OpenWeatherMap API.___
 
 ### Requirements
 Необходимо разработать анализатор погоды. Нужно использовать сторонние API (например https://rapidapi.com/weatherapi/api/weatherapi-com). Приложение будет запрашивать погоду с заданной в настройках периодичностью по определенному городу.
