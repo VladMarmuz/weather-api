@@ -4,6 +4,7 @@ import com.marmuz.wheatherapi.exception.DataIsIncorrectException;
 import com.marmuz.wheatherapi.model.WeatherData;
 import com.marmuz.wheatherapi.repository.WeatherRepository;
 import lombok.RequiredArgsConstructor;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,11 +59,11 @@ public class WeatherAPI {
 
     public Optional<WeatherData> gettingWeather() throws Exception {
 
-        var json = sendGet();
+        String json = sendGet();
 
-        var obj = new JSONObject(json);
-        var list = obj.getJSONArray("list");
-        var lastMeasurements = list.optJSONObject(7);
+        JSONObject obj = new JSONObject(json);
+        JSONArray list = obj.getJSONArray("list");
+        JSONObject lastMeasurements = list.optJSONObject(7);
         logger.info("Converting data from json to java object ");
 
         return Optional.of(WeatherData.builder()

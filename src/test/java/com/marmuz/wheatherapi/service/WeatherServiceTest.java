@@ -33,13 +33,13 @@ class WeatherServiceTest {
 
     @Test
     void findWeather() {
-        var weather = createWeather();
+        WeatherData weather = createWeather();
         doReturn(Optional.of(weather))
                 .when(weatherRepository).findCurrentWeather();
 
-        var actualResult = weatherService.findWeather();
+        WeatherResponse actualResult = weatherService.findWeather();
 
-        var expectedResult = createWeatherResponse();
+        WeatherResponse expectedResult = createWeatherResponse();
         assertEquals(actualResult, expectedResult);
 
         verify(weatherRepository).findCurrentWeather();
@@ -75,7 +75,7 @@ class WeatherServiceTest {
 
     public WeatherData createWeather() {
         return WeatherData.builder()
-                .weatherDate(LocalDate.ofEpochDay(2023 - 03 - 17))
+                .weatherDate(LocalDate.ofEpochDay(2023-03-17))
                 .temperature(5)
                 .windSpeed(9000)
                 .atmospherePressure(1055)
